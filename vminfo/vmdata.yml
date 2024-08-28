@@ -1,0 +1,1229 @@
+api_found: true
+changed: false
+failed: false
+resources:
+-   apiVersion: kubevirt.io/v1
+    kind: VirtualMachine
+    metadata:
+        annotations:
+            kubevirt.io/latest-observed-api-version: v1
+            kubevirt.io/storage-observed-api-version: v1
+            vm.kubevirt.io/validations: "[\n  {\n    \"name\": \"minimal-required-memory\",\n
+                \   \"path\": \"jsonpath::.spec.domain.memory.guest\",\n    \"rule\":
+                \"integer\",\n    \"message\": \"This VM requires more memory.\",\n
+                \   \"min\": 1610612736\n  }\n]\n"
+        creationTimestamp: '2024-08-05T17:23:08Z'
+        finalizers:
+        - kubevirt.io/virtualMachineControllerFinalize
+        generation: 1
+        labels:
+            app: rhel9-amaranth-silverfish-13
+            department: sales
+            kubevirt.io/dynamic-credentials-support: 'true'
+            vm.kubevirt.io/template: rhel9-server-small
+            vm.kubevirt.io/template.namespace: openshift
+            vm.kubevirt.io/template.revision: '1'
+            vm.kubevirt.io/template.version: v0.29.1
+        managedFields:
+        -   apiVersion: kubevirt.io/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+                f:spec:
+                    f:template:
+                        f:spec:
+                            f:nodeSelector:
+                                .: {}
+                                f:nodename: {}
+            manager: kubectl-create
+            operation: Update
+            time: '2024-08-05T17:22:36Z'
+        -   apiVersion: kubevirt.io/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+                f:metadata:
+                    f:annotations:
+                        .: {}
+                        f:kubemacpool.io/transaction-timestamp: {}
+                        f:vm.kubevirt.io/validations: {}
+                    f:labels:
+                        .: {}
+                        f:app: {}
+                        f:department: {}
+                        f:kubevirt.io/dynamic-credentials-support: {}
+                        f:vm.kubevirt.io/template: {}
+                        f:vm.kubevirt.io/template.namespace: {}
+                        f:vm.kubevirt.io/template.revision: {}
+                        f:vm.kubevirt.io/template.version: {}
+                f:spec:
+                    .: {}
+                    f:dataVolumeTemplates: {}
+                    f:running: {}
+                    f:template:
+                        .: {}
+                        f:metadata:
+                            .: {}
+                            f:annotations:
+                                .: {}
+                                f:vm.kubevirt.io/flavor: {}
+                                f:vm.kubevirt.io/os: {}
+                                f:vm.kubevirt.io/workload: {}
+                            f:creationTimestamp: {}
+                            f:labels:
+                                .: {}
+                                f:kubevirt.io/domain: {}
+                                f:kubevirt.io/size: {}
+                                f:network.kubevirt.io/headlessService: {}
+                        f:spec:
+                            .: {}
+                            f:architecture: {}
+                            f:domain:
+                                .: {}
+                                f:cpu:
+                                    .: {}
+                                    f:cores: {}
+                                    f:sockets: {}
+                                    f:threads: {}
+                                f:devices:
+                                    .: {}
+                                    f:disks: {}
+                                    f:interfaces: {}
+                                    f:logSerialConsole: {}
+                                    f:rng: {}
+                                f:features:
+                                    .: {}
+                                    f:acpi: {}
+                                    f:smm:
+                                        .: {}
+                                        f:enabled: {}
+                                f:firmware:
+                                    .: {}
+                                    f:bootloader:
+                                        .: {}
+                                        f:efi: {}
+                                f:machine:
+                                    .: {}
+                                    f:type: {}
+                                f:memory:
+                                    .: {}
+                                    f:guest: {}
+                                f:resources: {}
+                            f:networks: {}
+                            f:terminationGracePeriodSeconds: {}
+                            f:volumes: {}
+            manager: Mozilla
+            operation: Update
+            time: '2024-08-05T17:23:08Z'
+        -   apiVersion: kubevirt.io/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+                f:metadata:
+                    f:annotations:
+                        f:kubevirt.io/latest-observed-api-version: {}
+                        f:kubevirt.io/storage-observed-api-version: {}
+                    f:finalizers:
+                        .: {}
+                        v:"kubevirt.io/virtualMachineControllerFinalize": {}
+            manager: virt-controller
+            operation: Update
+            time: '2024-08-05T17:23:08Z'
+        -   apiVersion: kubevirt.io/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+                f:status:
+                    .: {}
+                    f:conditions: {}
+                    f:created: {}
+                    f:desiredGeneration: {}
+                    f:observedGeneration: {}
+                    f:printableStatus: {}
+                    f:ready: {}
+                    f:runStrategy: {}
+                    f:volumeSnapshotStatuses: {}
+            manager: virt-controller
+            operation: Update
+            subresource: status
+            time: '2024-08-06T23:59:01Z'
+        name: demovm
+        namespace: default
+        resourceVersion: '28169405'
+        uid: ab62d6fd-2c0f-415f-8591-5dbd0ac53e17
+    spec:
+        dataVolumeTemplates:
+        -   apiVersion: cdi.kubevirt.io/v1beta1
+            kind: DataVolume
+            metadata:
+                creationTimestamp: null
+                name: rhel9-amaranth-silverfish-13
+            spec:
+                sourceRef:
+                    kind: DataSource
+                    name: rhel9
+                    namespace: openshift-virtualization-os-images
+                storage:
+                    resources:
+                        requests:
+                            storage: 30Gi
+        running: true
+        template:
+            metadata:
+                annotations:
+                    vm.kubevirt.io/flavor: small
+                    vm.kubevirt.io/os: rhel9
+                    vm.kubevirt.io/workload: server
+                creationTimestamp: null
+                labels:
+                    kubevirt.io/domain: rhel9-amaranth-silverfish-13
+                    kubevirt.io/size: small
+                    network.kubevirt.io/headlessService: headless
+            spec:
+                architecture: amd64
+                domain:
+                    cpu:
+                        cores: 1
+                        sockets: 1
+                        threads: 1
+                    devices:
+                        disks:
+                        -   disk:
+                                bus: virtio
+                            name: rootdisk
+                        -   disk:
+                                bus: virtio
+                            name: cloudinitdisk
+                        interfaces:
+                        -   macAddress: 02:72:57:00:00:01
+                            masquerade: {}
+                            model: virtio
+                            name: default
+                        logSerialConsole: false
+                        rng: {}
+                    features:
+                        acpi: {}
+                        smm:
+                            enabled: true
+                    firmware:
+                        bootloader:
+                            efi: {}
+                    machine:
+                        type: pc-q35-rhel9.4.0
+                    memory:
+                        guest: 2Gi
+                    resources: {}
+                networks:
+                -   name: default
+                    pod: {}
+                terminationGracePeriodSeconds: 180
+                volumes:
+                -   dataVolume:
+                        name: rhel9-amaranth-silverfish-13
+                    name: rootdisk
+                -   cloudInitNoCloud:
+                        userData: '#cloud-config
+
+                            user: cloud-user
+
+                            password: 8oyi-tdr8-hcgp
+
+                            chpasswd: { expire: False }'
+                    name: cloudinitdisk
+    status:
+        conditions:
+        -   lastProbeTime: null
+            lastTransitionTime: '2024-08-06T23:59:01Z'
+            status: 'True'
+            type: Ready
+        -   lastProbeTime: null
+            lastTransitionTime: null
+            message: All of the VMI's DVs are bound and not running
+            reason: AllDVsReady
+            status: 'True'
+            type: DataVolumesReady
+        -   lastProbeTime: null
+            lastTransitionTime: null
+            status: 'True'
+            type: LiveMigratable
+        -   lastProbeTime: '2024-08-05T17:23:52Z'
+            lastTransitionTime: null
+            status: 'True'
+            type: AgentConnected
+        created: true
+        desiredGeneration: 1
+        observedGeneration: 1
+        printableStatus: Running
+        ready: true
+        runStrategy: Always
+        volumeSnapshotStatuses:
+        -   enabled: true
+            name: rootdisk
+        -   enabled: false
+            name: cloudinitdisk
+            reason: Snapshot is not supported for this volumeSource type [cloudinitdisk]
+-   apiVersion: kubevirt.io/v1
+    kind: VirtualMachine
+    metadata:
+        annotations:
+            kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"kubevirt.io/v1","kind":"VirtualMachine","metadata":{"annotations":{"vm.kubevirt.io/validations":"[\n  {\n    \"name\":
+                \"minimal-required-memory\",\n    \"path\": \"jsonpath::.spec.domain.resources.requests.memory\",\n    \"rule\":
+                \"integer\",\n    \"message\": \"This VM requires more memory.\",\n    \"min\":
+                1610612736\n  }\n]\n"},"labels":{"app":"centos-gitops1","app.kubernetes.io/instance":"vms-demo1","vm.kubevirt.io/template":"centos8-server-small","vm.kubevirt.io/template.revision":"1","vm.kubevirt.io/template.version":"v0.14.0"},"name":"centos-gitops1","namespace":"kubevirt-gitops"},"spec":{"dataVolumeTemplates":[{"apiVersion":"cdi.kubevirt.io/v1beta1","kind":"DataVolume","metadata":{"name":"centos-gitops1"},"spec":{"pvc":{"accessModes":["ReadWriteMany"],"resources":{"requests":{"storage":"30Gi"}},"volumeMode":"Block"},"source":{"pvc":{"name":"centos8-custom","namespace":"openshift-virtualization-os-images"}}}}],"running":true,"template":{"metadata":{"annotations":{"vm.kubevirt.io/flavor":"small","vm.kubevirt.io/os":"centos8","vm.kubevirt.io/workload":"server"},"labels":{"kubevirt.io/domain":"centos-gitops1","kubevirt.io/size":"small"}},"spec":{"domain":{"cpu":{"cores":1,"sockets":1,"threads":1},"devices":{"disks":[{"disk":{"bus":"virtio"},"name":"centos-gitops1"},{"disk":{"bus":"virtio"},"name":"cloudinitdisk"}],"interfaces":[{"masquerade":{},"name":"default"}],"networkInterfaceMultiqueue":true,"rng":{}},"machine":{"type":"pc-q35-rhel8.4.0"},"resources":{"requests":{"memory":"2Gi"}}},"evictionStrategy":"LiveMigrate","networks":[{"name":"default","pod":{}}],"terminationGracePeriodSeconds":180,"volumes":[{"dataVolume":{"name":"centos-gitops1"},"name":"centos-gitops1"},{"cloudInitNoCloud":{"userData":"#cloud-config\nuser:
+                centos\npassword: 30jt-pghb-jj0i\nchpasswd: { expire: False }"},"name":"cloudinitdisk"}]}}}}
+
+                '
+            kubemacpool.io/transaction-timestamp: '2024-07-23T21:12:31.384360918Z'
+            kubevirt.io/latest-observed-api-version: v1
+            kubevirt.io/storage-observed-api-version: v1
+            vm.kubevirt.io/validations: "[\n  {\n    \"name\": \"minimal-required-memory\",\n
+                \   \"path\": \"jsonpath::.spec.domain.resources.requests.memory\",\n
+                \   \"rule\": \"integer\",\n    \"message\": \"This VM requires more
+                memory.\",\n    \"min\": 1610612736\n  }\n]\n"
+        creationTimestamp: '2024-07-23T20:45:58Z'
+        finalizers:
+        - kubevirt.io/virtualMachineControllerFinalize
+        generation: 1
+        labels:
+            app: centos-gitops1
+            app.kubernetes.io/instance: vms-demo1
+            vm.kubevirt.io/template: centos8-server-small
+            vm.kubevirt.io/template.revision: '1'
+            vm.kubevirt.io/template.version: v0.14.0
+        managedFields:
+        -   apiVersion: kubevirt.io/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+                f:metadata:
+                    f:annotations:
+                        f:kubevirt.io/latest-observed-api-version: {}
+                        f:kubevirt.io/storage-observed-api-version: {}
+                    f:finalizers:
+                        .: {}
+                        v:"kubevirt.io/virtualMachineControllerFinalize": {}
+            manager: virt-controller
+            operation: Update
+            time: '2024-07-23T20:45:58Z'
+        -   apiVersion: kubevirt.io/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+                f:metadata:
+                    f:annotations:
+                        .: {}
+                        f:kubectl.kubernetes.io/last-applied-configuration: {}
+                        f:vm.kubevirt.io/validations: {}
+                    f:labels:
+                        .: {}
+                        f:app: {}
+                        f:app.kubernetes.io/instance: {}
+                        f:vm.kubevirt.io/template: {}
+                        f:vm.kubevirt.io/template.revision: {}
+                        f:vm.kubevirt.io/template.version: {}
+                f:spec:
+                    .: {}
+                    f:dataVolumeTemplates: {}
+                    f:running: {}
+                    f:template:
+                        .: {}
+                        f:metadata:
+                            .: {}
+                            f:annotations:
+                                .: {}
+                                f:vm.kubevirt.io/flavor: {}
+                                f:vm.kubevirt.io/os: {}
+                                f:vm.kubevirt.io/workload: {}
+                            f:labels:
+                                .: {}
+                                f:kubevirt.io/domain: {}
+                                f:kubevirt.io/size: {}
+                        f:spec:
+                            .: {}
+                            f:domain:
+                                .: {}
+                                f:cpu:
+                                    .: {}
+                                    f:cores: {}
+                                    f:sockets: {}
+                                    f:threads: {}
+                                f:devices:
+                                    .: {}
+                                    f:disks: {}
+                                    f:interfaces: {}
+                                    f:networkInterfaceMultiqueue: {}
+                                    f:rng: {}
+                                f:machine:
+                                    .: {}
+                                    f:type: {}
+                                f:resources:
+                                    .: {}
+                                    f:requests:
+                                        .: {}
+                                        f:memory: {}
+                            f:evictionStrategy: {}
+                            f:networks: {}
+                            f:terminationGracePeriodSeconds: {}
+                            f:volumes: {}
+            manager: argocd-controller
+            operation: Update
+            time: '2024-07-23T21:12:31Z'
+        -   apiVersion: kubevirt.io/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+                f:status:
+                    .: {}
+                    f:conditions: {}
+                    f:created: {}
+                    f:desiredGeneration: {}
+                    f:observedGeneration: {}
+                    f:printableStatus: {}
+                    f:ready: {}
+                    f:runStrategy: {}
+                    f:volumeSnapshotStatuses: {}
+            manager: virt-controller
+            operation: Update
+            subresource: status
+            time: '2024-08-06T23:58:59Z'
+        name: centos-gitops1
+        namespace: kubevirt-gitops
+        resourceVersion: '28169333'
+        uid: 44991aa2-ffa3-4db6-a3d3-ebcaa39159af
+    spec:
+        dataVolumeTemplates:
+        -   apiVersion: cdi.kubevirt.io/v1beta1
+            kind: DataVolume
+            metadata:
+                creationTimestamp: null
+                name: centos-gitops1
+            spec:
+                pvc:
+                    accessModes:
+                    - ReadWriteMany
+                    resources:
+                        requests:
+                            storage: 30Gi
+                    volumeMode: Block
+                source:
+                    pvc:
+                        name: centos8-custom
+                        namespace: openshift-virtualization-os-images
+        running: true
+        template:
+            metadata:
+                annotations:
+                    vm.kubevirt.io/flavor: small
+                    vm.kubevirt.io/os: centos8
+                    vm.kubevirt.io/workload: server
+                creationTimestamp: null
+                labels:
+                    kubevirt.io/domain: centos-gitops1
+                    kubevirt.io/size: small
+            spec:
+                architecture: amd64
+                domain:
+                    cpu:
+                        cores: 1
+                        sockets: 1
+                        threads: 1
+                    devices:
+                        disks:
+                        -   disk:
+                                bus: virtio
+                            name: centos-gitops1
+                        -   disk:
+                                bus: virtio
+                            name: cloudinitdisk
+                        interfaces:
+                        -   macAddress: 02:72:57:00:00:02
+                            masquerade: {}
+                            name: default
+                        networkInterfaceMultiqueue: true
+                        rng: {}
+                    machine:
+                        type: pc-q35-rhel8.4.0
+                    resources:
+                        requests:
+                            memory: 2Gi
+                evictionStrategy: LiveMigrate
+                networks:
+                -   name: default
+                    pod: {}
+                terminationGracePeriodSeconds: 180
+                volumes:
+                -   dataVolume:
+                        name: centos-gitops1
+                    name: centos-gitops1
+                -   cloudInitNoCloud:
+                        userData: '#cloud-config
+
+                            user: centos
+
+                            password: 30jt-pghb-jj0i
+
+                            chpasswd: { expire: False }'
+                    name: cloudinitdisk
+    status:
+        conditions:
+        -   lastProbeTime: null
+            lastTransitionTime: '2024-08-06T23:58:59Z'
+            status: 'True'
+            type: Ready
+        -   lastProbeTime: null
+            lastTransitionTime: null
+            message: All of the VMI's DVs are bound and not running
+            reason: AllDVsReady
+            status: 'True'
+            type: DataVolumesReady
+        -   lastProbeTime: null
+            lastTransitionTime: null
+            status: 'True'
+            type: LiveMigratable
+        -   lastProbeTime: '2024-07-25T02:17:50Z'
+            lastTransitionTime: null
+            status: 'True'
+            type: AgentConnected
+        created: true
+        desiredGeneration: 1
+        observedGeneration: 1
+        printableStatus: Running
+        ready: true
+        runStrategy: Always
+        volumeSnapshotStatuses:
+        -   enabled: true
+            name: centos-gitops1
+        -   enabled: false
+            name: cloudinitdisk
+            reason: Snapshot is not supported for this volumeSource type [cloudinitdisk]
+-   apiVersion: kubevirt.io/v1
+    kind: VirtualMachine
+    metadata:
+        annotations:
+            kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"kubevirt.io/v1","kind":"VirtualMachine","metadata":{"annotations":{"vm.kubevirt.io/validations":"[\n  {\n    \"name\":
+                \"minimal-required-memory\",\n    \"path\": \"jsonpath::.spec.domain.resources.requests.memory\",\n    \"rule\":
+                \"integer\",\n    \"message\": \"This VM requires more memory.\",\n    \"min\":
+                1073741824\n  }\n]\n"},"labels":{"app":"fedora-gitops1","app.kubernetes.io/instance":"vms-demo1","vm.kubevirt.io/template":"fedora-server-small","vm.kubevirt.io/template.namespace":"openshift","vm.kubevirt.io/template.revision":"1","vm.kubevirt.io/template.version":"v0.29.1"},"name":"fedora-gitops1","namespace":"kubevirt-gitops"},"spec":{"dataVolumeTemplates":[{"apiVersion":"cdi.kubevirt.io/v1beta1","kind":"DataVolume","metadata":{"name":"fedora-gitops1"},"spec":{"pvc":{"accessModes":["ReadWriteMany"],"resources":{"requests":{"storage":"30Gi"}},"volumeMode":"Block"},"source":{"pvc":{"name":"fedora-custom","namespace":"openshift-virtualization-os-images"}}}}],"running":true,"template":{"metadata":{"annotations":{"vm.kubevirt.io/flavor":"small","vm.kubevirt.io/os":"fedora","vm.kubevirt.io/workload":"server"},"labels":{"kubevirt.io/domain":"fedora-gitops1","kubevirt.io/size":"small"}},"spec":{"domain":{"cpu":{"cores":2,"sockets":1,"threads":1},"devices":{"disks":[{"disk":{"bus":"virtio"},"name":"fedora-gitops1"},{"disk":{"bus":"virtio"},"name":"cloudinitdisk"}],"interfaces":[{"masquerade":{},"model":"virtio","name":"default"}],"networkInterfaceMultiqueue":true,"rng":{}},"machine":{"type":"pc-q35-rhel9.4.0"},"resources":{"requests":{"memory":"2Gi"}}},"evictionStrategy":"LiveMigrate","networks":[{"name":"default","pod":{}}],"terminationGracePeriodSeconds":180,"volumes":[{"dataVolume":{"name":"fedora-gitops1"},"name":"fedora-gitops1"},{"cloudInitConfigDrive":{"userData":"#cloud-config\nuser:
+                fedora\npassword: devconf22\nchpasswd: { expire: False }\nssh_authorized_keys:\n-
+                ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCtvdYw+25qic4Fn8nsnKHQsRbB/ybxRDxPEMwURIBT5dnPfq1Dy4xZ+XmseZS9qqJwiHkilQU3s268bEios6cASa37XgfTb84ZdjWZa9WeBxCg267DZKAuwu+vzx3H4xCPxs79WJwVM2AtzaZi6j5KQcXqit1NDy8iK/0b4AhU5Vpr7hmhk8qD4xvn4wW6K5mi1jI6RUEyZZj8K+jvCItUEK+kKh/9sAOqPSY3qQxbadwVI6QoDC0e26H7gNhfEnP68Rv5/Pr5/DlpIv7APfpXKpgX583JdsFyhZsApxI9a363hNvfQ3ETz8r0qOEvs/ESyfvf8tlyc2/0phu0gp5I0uyEOpmH9C9Kb/i1FshaPRB8nrsDDhzxjMYS0EhdCdIHG1VB4SdANmXrECT/yR+1UCwuBq4x+z8UuHfNseYHzrj+mkLLAU9nD7gAsAGJCsXcoR5k58KA9xSSC0nyRC1fIeQ92dDEkW+tSSXoiGWMrVRaJI1E90E+pXAaB0bVVT8=
+                fedora@fedora-gitops1"},"name":"cloudinitdisk"}]}}}}
+
+                '
+            kubemacpool.io/transaction-timestamp: '2024-07-23T21:12:31.423692346Z'
+            kubevirt.io/latest-observed-api-version: v1
+            kubevirt.io/storage-observed-api-version: v1
+            vm.kubevirt.io/validations: "[\n  {\n    \"name\": \"minimal-required-memory\",\n
+                \   \"path\": \"jsonpath::.spec.domain.resources.requests.memory\",\n
+                \   \"rule\": \"integer\",\n    \"message\": \"This VM requires more
+                memory.\",\n    \"min\": 1073741824\n  }\n]\n"
+        creationTimestamp: '2024-07-23T21:08:21Z'
+        finalizers:
+        - kubevirt.io/virtualMachineControllerFinalize
+        generation: 2
+        labels:
+            app: fedora-gitops1
+            app.kubernetes.io/instance: vms-demo1
+            vm.kubevirt.io/template: fedora-server-small
+            vm.kubevirt.io/template.namespace: openshift
+            vm.kubevirt.io/template.revision: '1'
+            vm.kubevirt.io/template.version: v0.29.1
+        managedFields:
+        -   apiVersion: kubevirt.io/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+                f:metadata:
+                    f:annotations: {}
+                    f:labels:
+                        .: {}
+                        f:app: {}
+                        f:vm.kubevirt.io/template: {}
+                        f:vm.kubevirt.io/template.namespace: {}
+                        f:vm.kubevirt.io/template.revision: {}
+                        f:vm.kubevirt.io/template.version: {}
+                f:spec:
+                    .: {}
+                    f:running: {}
+                    f:template:
+                        .: {}
+                        f:metadata:
+                            .: {}
+                            f:annotations:
+                                .: {}
+                                f:vm.kubevirt.io/flavor: {}
+                                f:vm.kubevirt.io/os: {}
+                                f:vm.kubevirt.io/workload: {}
+                            f:labels:
+                                .: {}
+                                f:kubevirt.io/domain: {}
+                                f:kubevirt.io/size: {}
+                        f:spec:
+                            .: {}
+                            f:domain:
+                                .: {}
+                                f:cpu:
+                                    .: {}
+                                    f:cores: {}
+                                    f:sockets: {}
+                                    f:threads: {}
+                                f:devices:
+                                    .: {}
+                                    f:disks: {}
+                                    f:networkInterfaceMultiqueue: {}
+                                    f:rng: {}
+                                f:machine:
+                                    .: {}
+                                    f:type: {}
+                                f:resources:
+                                    .: {}
+                                    f:requests:
+                                        .: {}
+                                        f:memory: {}
+                            f:evictionStrategy: {}
+                            f:networks: {}
+                            f:terminationGracePeriodSeconds: {}
+            manager: Mozilla
+            operation: Update
+            time: '2024-07-23T21:08:21Z'
+        -   apiVersion: kubevirt.io/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+                f:metadata:
+                    f:annotations:
+                        f:kubevirt.io/latest-observed-api-version: {}
+                        f:kubevirt.io/storage-observed-api-version: {}
+                    f:finalizers:
+                        .: {}
+                        v:"kubevirt.io/virtualMachineControllerFinalize": {}
+            manager: virt-controller
+            operation: Update
+            time: '2024-07-23T21:08:21Z'
+        -   apiVersion: kubevirt.io/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+                f:metadata:
+                    f:annotations:
+                        f:kubectl.kubernetes.io/last-applied-configuration: {}
+                        f:vm.kubevirt.io/validations: {}
+                    f:labels:
+                        f:app.kubernetes.io/instance: {}
+                f:spec:
+                    f:dataVolumeTemplates: {}
+                    f:template:
+                        f:spec:
+                            f:domain:
+                                f:devices:
+                                    f:interfaces: {}
+                            f:volumes: {}
+            manager: argocd-controller
+            operation: Update
+            time: '2024-07-23T21:12:31Z'
+        -   apiVersion: kubevirt.io/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+                f:status:
+                    .: {}
+                    f:conditions: {}
+                    f:created: {}
+                    f:desiredGeneration: {}
+                    f:observedGeneration: {}
+                    f:printableStatus: {}
+                    f:ready: {}
+                    f:runStrategy: {}
+                    f:volumeSnapshotStatuses: {}
+            manager: virt-controller
+            operation: Update
+            subresource: status
+            time: '2024-08-06T23:59:01Z'
+        name: fedora-gitops1
+        namespace: kubevirt-gitops
+        resourceVersion: '28169404'
+        uid: e5df8b1d-aaed-43ae-af81-21cbd017ddb5
+    spec:
+        dataVolumeTemplates:
+        -   apiVersion: cdi.kubevirt.io/v1beta1
+            kind: DataVolume
+            metadata:
+                creationTimestamp: null
+                name: fedora-gitops1
+            spec:
+                pvc:
+                    accessModes:
+                    - ReadWriteMany
+                    resources:
+                        requests:
+                            storage: 30Gi
+                    volumeMode: Block
+                source:
+                    pvc:
+                        name: fedora-custom
+                        namespace: openshift-virtualization-os-images
+        running: true
+        template:
+            metadata:
+                annotations:
+                    vm.kubevirt.io/flavor: small
+                    vm.kubevirt.io/os: fedora
+                    vm.kubevirt.io/workload: server
+                creationTimestamp: null
+                labels:
+                    kubevirt.io/domain: fedora-gitops1
+                    kubevirt.io/size: small
+            spec:
+                architecture: amd64
+                domain:
+                    cpu:
+                        cores: 2
+                        sockets: 1
+                        threads: 1
+                    devices:
+                        disks:
+                        -   disk:
+                                bus: virtio
+                            name: fedora-gitops1
+                        -   disk:
+                                bus: virtio
+                            name: cloudinitdisk
+                        interfaces:
+                        -   macAddress: 02:72:57:00:00:14
+                            masquerade: {}
+                            model: virtio
+                            name: default
+                        networkInterfaceMultiqueue: true
+                        rng: {}
+                    machine:
+                        type: pc-q35-rhel9.4.0
+                    resources:
+                        requests:
+                            memory: 2Gi
+                evictionStrategy: LiveMigrate
+                networks:
+                -   name: default
+                    pod: {}
+                terminationGracePeriodSeconds: 180
+                volumes:
+                -   dataVolume:
+                        name: fedora-gitops1
+                    name: fedora-gitops1
+                -   cloudInitConfigDrive:
+                        userData: '#cloud-config
+
+                            user: fedora
+
+                            password: devconf22
+
+                            chpasswd: { expire: False }
+
+                            ssh_authorized_keys:
+
+                            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCtvdYw+25qic4Fn8nsnKHQsRbB/ybxRDxPEMwURIBT5dnPfq1Dy4xZ+XmseZS9qqJwiHkilQU3s268bEios6cASa37XgfTb84ZdjWZa9WeBxCg267DZKAuwu+vzx3H4xCPxs79WJwVM2AtzaZi6j5KQcXqit1NDy8iK/0b4AhU5Vpr7hmhk8qD4xvn4wW6K5mi1jI6RUEyZZj8K+jvCItUEK+kKh/9sAOqPSY3qQxbadwVI6QoDC0e26H7gNhfEnP68Rv5/Pr5/DlpIv7APfpXKpgX583JdsFyhZsApxI9a363hNvfQ3ETz8r0qOEvs/ESyfvf8tlyc2/0phu0gp5I0uyEOpmH9C9Kb/i1FshaPRB8nrsDDhzxjMYS0EhdCdIHG1VB4SdANmXrECT/yR+1UCwuBq4x+z8UuHfNseYHzrj+mkLLAU9nD7gAsAGJCsXcoR5k58KA9xSSC0nyRC1fIeQ92dDEkW+tSSXoiGWMrVRaJI1E90E+pXAaB0bVVT8=
+                            fedora@fedora-gitops1'
+                    name: cloudinitdisk
+    status:
+        conditions:
+        -   lastProbeTime: null
+            lastTransitionTime: '2024-08-06T23:59:01Z'
+            status: 'True'
+            type: Ready
+        -   lastProbeTime: null
+            lastTransitionTime: null
+            message: All of the VMI's DVs are bound and not running
+            reason: AllDVsReady
+            status: 'True'
+            type: DataVolumesReady
+        -   lastProbeTime: null
+            lastTransitionTime: null
+            status: 'True'
+            type: LiveMigratable
+        -   lastProbeTime: '2024-07-25T02:17:43Z'
+            lastTransitionTime: null
+            status: 'True'
+            type: AgentConnected
+        created: true
+        desiredGeneration: 2
+        observedGeneration: 2
+        printableStatus: Running
+        ready: true
+        runStrategy: Always
+        volumeSnapshotStatuses:
+        -   enabled: true
+            name: fedora-gitops1
+        -   enabled: false
+            name: cloudinitdisk
+            reason: Snapshot is not supported for this volumeSource type [cloudinitdisk]
+-   apiVersion: kubevirt.io/v1
+    kind: VirtualMachine
+    metadata:
+        annotations:
+            kubevirt.io/latest-observed-api-version: v1
+            kubevirt.io/storage-observed-api-version: v1
+            vm.kubevirt.io/validations: "[\n  {\n    \"name\": \"minimal-required-memory\",\n
+                \   \"path\": \"jsonpath::.spec.domain.memory.guest\",\n    \"rule\":
+                \"integer\",\n    \"message\": \"This VM requires more memory.\",\n
+                \   \"min\": 1610612736\n  }\n]\n"
+        creationTimestamp: '2024-08-08T13:48:46Z'
+        finalizers:
+        - kubevirt.io/virtualMachineControllerFinalize
+        generation: 1
+        labels:
+            app: rhel9-copper-vole-12
+            kubevirt.io/dynamic-credentials-support: 'true'
+            vm.kubevirt.io/template: rhel9-server-small
+            vm.kubevirt.io/template.namespace: openshift
+            vm.kubevirt.io/template.revision: '1'
+            vm.kubevirt.io/template.version: v0.29.1
+        managedFields:
+        -   apiVersion: kubevirt.io/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+                f:metadata:
+                    f:annotations:
+                        .: {}
+                        f:kubemacpool.io/transaction-timestamp: {}
+                        f:vm.kubevirt.io/validations: {}
+                    f:labels:
+                        .: {}
+                        f:app: {}
+                        f:kubevirt.io/dynamic-credentials-support: {}
+                        f:vm.kubevirt.io/template: {}
+                        f:vm.kubevirt.io/template.namespace: {}
+                        f:vm.kubevirt.io/template.revision: {}
+                        f:vm.kubevirt.io/template.version: {}
+                f:spec:
+                    .: {}
+                    f:dataVolumeTemplates: {}
+                    f:running: {}
+                    f:template:
+                        .: {}
+                        f:metadata:
+                            .: {}
+                            f:annotations:
+                                .: {}
+                                f:vm.kubevirt.io/flavor: {}
+                                f:vm.kubevirt.io/os: {}
+                                f:vm.kubevirt.io/workload: {}
+                            f:creationTimestamp: {}
+                            f:labels:
+                                .: {}
+                                f:kubevirt.io/domain: {}
+                                f:kubevirt.io/size: {}
+                                f:network.kubevirt.io/headlessService: {}
+                        f:spec:
+                            .: {}
+                            f:architecture: {}
+                            f:domain:
+                                .: {}
+                                f:cpu:
+                                    .: {}
+                                    f:cores: {}
+                                    f:sockets: {}
+                                    f:threads: {}
+                                f:devices:
+                                    .: {}
+                                    f:disks: {}
+                                    f:interfaces: {}
+                                    f:logSerialConsole: {}
+                                    f:rng: {}
+                                f:features:
+                                    .: {}
+                                    f:acpi: {}
+                                    f:smm:
+                                        .: {}
+                                        f:enabled: {}
+                                f:firmware:
+                                    .: {}
+                                    f:bootloader:
+                                        .: {}
+                                        f:efi: {}
+                                f:machine:
+                                    .: {}
+                                    f:type: {}
+                                f:memory:
+                                    .: {}
+                                    f:guest: {}
+                                f:resources: {}
+                            f:networks: {}
+                            f:terminationGracePeriodSeconds: {}
+                            f:volumes: {}
+            manager: Mozilla
+            operation: Update
+            time: '2024-08-08T13:48:46Z'
+        -   apiVersion: kubevirt.io/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+                f:metadata:
+                    f:annotations:
+                        f:kubevirt.io/latest-observed-api-version: {}
+                        f:kubevirt.io/storage-observed-api-version: {}
+                    f:finalizers:
+                        .: {}
+                        v:"kubevirt.io/virtualMachineControllerFinalize": {}
+            manager: virt-controller
+            operation: Update
+            time: '2024-08-08T13:48:46Z'
+        -   apiVersion: kubevirt.io/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+                f:status:
+                    .: {}
+                    f:conditions: {}
+                    f:created: {}
+                    f:desiredGeneration: {}
+                    f:observedGeneration: {}
+                    f:printableStatus: {}
+                    f:ready: {}
+                    f:runStrategy: {}
+                    f:volumeSnapshotStatuses: {}
+            manager: virt-controller
+            operation: Update
+            subresource: status
+            time: '2024-08-08T13:49:32Z'
+        name: rhel9-copper-vole-12
+        namespace: kubevirt-gitops
+        resourceVersion: '31462290'
+        uid: 0d46212e-9809-4e73-b7d5-a6e810ceb463
+    spec:
+        dataVolumeTemplates:
+        -   apiVersion: cdi.kubevirt.io/v1beta1
+            kind: DataVolume
+            metadata:
+                creationTimestamp: null
+                name: rhel9-copper-vole-12
+            spec:
+                sourceRef:
+                    kind: DataSource
+                    name: rhel9
+                    namespace: openshift-virtualization-os-images
+                storage:
+                    resources:
+                        requests:
+                            storage: 30Gi
+        -   metadata:
+                creationTimestamp: null
+                name: rhel9-copper-vole-12-example-disk
+            spec:
+                preallocation: false
+                source:
+                    blank: {}
+                storage:
+                    resources:
+                        requests:
+                            storage: 30Gi
+                    storageClassName: ocs-storagecluster-ceph-rbd-virtualization
+        running: true
+        template:
+            metadata:
+                annotations:
+                    vm.kubevirt.io/flavor: small
+                    vm.kubevirt.io/os: rhel9
+                    vm.kubevirt.io/workload: server
+                creationTimestamp: null
+                labels:
+                    kubevirt.io/domain: rhel9-copper-vole-12
+                    kubevirt.io/size: small
+                    network.kubevirt.io/headlessService: headless
+            spec:
+                architecture: amd64
+                domain:
+                    cpu:
+                        cores: 1
+                        sockets: 1
+                        threads: 1
+                    devices:
+                        disks:
+                        -   disk:
+                                bus: virtio
+                            name: rootdisk
+                        -   disk:
+                                bus: virtio
+                            name: cloudinitdisk
+                        -   disk:
+                                bus: virtio
+                            name: example-disk
+                        interfaces:
+                        -   macAddress: 02:72:57:00:00:00
+                            masquerade: {}
+                            model: virtio
+                            name: default
+                        logSerialConsole: false
+                        rng: {}
+                    features:
+                        acpi: {}
+                        smm:
+                            enabled: true
+                    firmware:
+                        bootloader:
+                            efi: {}
+                    machine:
+                        type: pc-q35-rhel9.4.0
+                    memory:
+                        guest: 2Gi
+                    resources: {}
+                networks:
+                -   name: default
+                    pod: {}
+                terminationGracePeriodSeconds: 180
+                volumes:
+                -   dataVolume:
+                        name: rhel9-copper-vole-12
+                    name: rootdisk
+                -   cloudInitNoCloud:
+                        userData: '#cloud-config
+
+                            user: cloud-user
+
+                            password: 0b55-yedq-c2o5
+
+                            chpasswd: { expire: False }'
+                    name: cloudinitdisk
+                -   dataVolume:
+                        name: rhel9-copper-vole-12-example-disk
+                    name: example-disk
+    status:
+        conditions:
+        -   lastProbeTime: null
+            lastTransitionTime: '2024-08-08T13:49:04Z'
+            status: 'True'
+            type: Ready
+        -   lastProbeTime: null
+            lastTransitionTime: null
+            message: All of the VMI's DVs are bound and not running
+            reason: AllDVsReady
+            status: 'True'
+            type: DataVolumesReady
+        -   lastProbeTime: null
+            lastTransitionTime: null
+            status: 'True'
+            type: LiveMigratable
+        -   lastProbeTime: '2024-08-08T13:49:32Z'
+            lastTransitionTime: null
+            status: 'True'
+            type: AgentConnected
+        created: true
+        desiredGeneration: 1
+        observedGeneration: 1
+        printableStatus: Running
+        ready: true
+        runStrategy: Always
+        volumeSnapshotStatuses:
+        -   enabled: true
+            name: rootdisk
+        -   enabled: false
+            name: cloudinitdisk
+            reason: Snapshot is not supported for this volumeSource type [cloudinitdisk]
+        -   enabled: true
+            name: example-disk
+-   apiVersion: kubevirt.io/v1
+    kind: VirtualMachine
+    metadata:
+        annotations:
+            description: windows-install
+            kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"kubevirt.io/v1","kind":"VirtualMachine","metadata":{"annotations":{"description":"windows-install","name.os.template.kubevirt.io/win2k19":"Microsoft
+                Windows Server 2019"},"labels":{"app":"windows-install"},"name":"windows-install","namespace":"kubevirt-gitops"},"spec":{"dataVolumeTemplates":[{"metadata":{"name":"windows-install-rootdisk"},"spec":{"pvc":{"accessModes":["ReadWriteMany"],"resources":{"requests":{"storage":"30Gi"}},"volumeMode":"Block"},"source":{"blank":{}}}}],"runStrategy":"RerunOnFailure","template":{"metadata":{"labels":{"kubevirt.io/domain":"windows-install","vm.kubevirt.io/name":"windows-install","workload.template.kubevirt.io/server":"true"}},"spec":{"domain":{"cpu":{"cores":2},"devices":{"disks":[{"disk":{"bus":"sata"},"name":"windows-install-rootdisk"},{"bootOrder":1,"cdrom":{"bus":"sata"},"name":"win2k19-install-iso"},{"cdrom":{"bus":"sata"},"name":"windows-guest-tools"},{"cdrom":{"bus":"sata"},"name":"windows-install-scripts"}],"interfaces":[{"masquerade":{},"model":"virtio","name":"default"}],"networkInterfaceMultiqueue":true,"rng":{}},"machine":{"type":"pc-q35-rhel8.4.0"},"resources":{"requests":{"memory":"4Gi"}}},"evictionStrategy":"LiveMigrate","hostname":"windows-install","networks":[{"name":"default","pod":{}}],"terminationGracePeriodSeconds":180,"volumes":[{"dataVolume":{"name":"windows-install-rootdisk"},"name":"windows-install-rootdisk"},{"name":"win2k19-install-iso","persistentVolumeClaim":{"claimName":"win2k19-install-iso"}},{"containerDisk":{"image":"registry.redhat.io/container-native-virtualization/virtio-win"},"name":"windows-guest-tools"},{"configMap":{"name":"windows-install-scripts-9dbccd72cf"},"name":"windows-install-scripts"}]}}}}
+
+                '
+            kubevirt.io/latest-observed-api-version: v1
+            kubevirt.io/storage-observed-api-version: v1
+            name.os.template.kubevirt.io/win2k19: Microsoft Windows Server 2019
+        creationTimestamp: '2024-07-23T20:52:28Z'
+        finalizers:
+        - kubevirt.io/virtualMachineControllerFinalize
+        generation: 1
+        labels:
+            app: windows-install
+        managedFields:
+        -   apiVersion: kubevirt.io/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+                f:metadata:
+                    f:annotations:
+                        .: {}
+                        f:description: {}
+                        f:kubectl.kubernetes.io/last-applied-configuration: {}
+                        f:name.os.template.kubevirt.io/win2k19: {}
+                    f:labels:
+                        .: {}
+                        f:app: {}
+                f:spec:
+                    .: {}
+                    f:dataVolumeTemplates: {}
+                    f:runStrategy: {}
+                    f:template:
+                        .: {}
+                        f:metadata:
+                            .: {}
+                            f:labels:
+                                .: {}
+                                f:kubevirt.io/domain: {}
+                                f:vm.kubevirt.io/name: {}
+                                f:workload.template.kubevirt.io/server: {}
+                        f:spec:
+                            .: {}
+                            f:domain:
+                                .: {}
+                                f:cpu:
+                                    .: {}
+                                    f:cores: {}
+                                f:devices:
+                                    .: {}
+                                    f:disks: {}
+                                    f:interfaces: {}
+                                    f:networkInterfaceMultiqueue: {}
+                                    f:rng: {}
+                                f:machine:
+                                    .: {}
+                                    f:type: {}
+                                f:resources:
+                                    .: {}
+                                    f:requests:
+                                        .: {}
+                                        f:memory: {}
+                            f:evictionStrategy: {}
+                            f:hostname: {}
+                            f:networks: {}
+                            f:terminationGracePeriodSeconds: {}
+                            f:volumes: {}
+            manager: kubectl-client-side-apply
+            operation: Update
+            time: '2024-07-23T20:52:28Z'
+        -   apiVersion: kubevirt.io/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+                f:metadata:
+                    f:annotations:
+                        f:kubevirt.io/latest-observed-api-version: {}
+                        f:kubevirt.io/storage-observed-api-version: {}
+                    f:finalizers:
+                        .: {}
+                        v:"kubevirt.io/virtualMachineControllerFinalize": {}
+            manager: virt-controller
+            operation: Update
+            time: '2024-07-23T20:52:28Z'
+        -   apiVersion: kubevirt.io/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+                f:status:
+                    .: {}
+                    f:conditions: {}
+                    f:created: {}
+                    f:desiredGeneration: {}
+                    f:observedGeneration: {}
+                    f:printableStatus: {}
+                    f:ready: {}
+                    f:runStrategy: {}
+                    f:volumeSnapshotStatuses: {}
+            manager: virt-controller
+            operation: Update
+            subresource: status
+            time: '2024-07-25T02:18:26Z'
+        name: windows-install
+        namespace: kubevirt-gitops
+        resourceVersion: '2434940'
+        uid: 888e2ba9-41e0-4280-8534-6abd899894c9
+    spec:
+        dataVolumeTemplates:
+        -   metadata:
+                creationTimestamp: null
+                name: windows-install-rootdisk
+            spec:
+                pvc:
+                    accessModes:
+                    - ReadWriteMany
+                    resources:
+                        requests:
+                            storage: 30Gi
+                    volumeMode: Block
+                source:
+                    blank: {}
+        runStrategy: RerunOnFailure
+        template:
+            metadata:
+                creationTimestamp: null
+                labels:
+                    kubevirt.io/domain: windows-install
+                    vm.kubevirt.io/name: windows-install
+                    workload.template.kubevirt.io/server: 'true'
+            spec:
+                architecture: amd64
+                domain:
+                    cpu:
+                        cores: 2
+                    devices:
+                        disks:
+                        -   disk:
+                                bus: sata
+                            name: windows-install-rootdisk
+                        -   bootOrder: 1
+                            cdrom:
+                                bus: sata
+                            name: win2k19-install-iso
+                        -   cdrom:
+                                bus: sata
+                            name: windows-guest-tools
+                        -   cdrom:
+                                bus: sata
+                            name: windows-install-scripts
+                        interfaces:
+                        -   macAddress: 02:72:57:00:00:03
+                            masquerade: {}
+                            model: virtio
+                            name: default
+                        networkInterfaceMultiqueue: true
+                        rng: {}
+                    machine:
+                        type: pc-q35-rhel8.4.0
+                    resources:
+                        requests:
+                            memory: 4Gi
+                evictionStrategy: LiveMigrate
+                hostname: windows-install
+                networks:
+                -   name: default
+                    pod: {}
+                terminationGracePeriodSeconds: 180
+                volumes:
+                -   dataVolume:
+                        name: windows-install-rootdisk
+                    name: windows-install-rootdisk
+                -   name: win2k19-install-iso
+                    persistentVolumeClaim:
+                        claimName: win2k19-install-iso
+                -   containerDisk:
+                        image: registry.redhat.io/container-native-virtualization/virtio-win
+                    name: windows-guest-tools
+                -   configMap:
+                        name: windows-install-scripts-9dbccd72cf
+                    name: windows-install-scripts
+    status:
+        conditions:
+        -   lastProbeTime: null
+            lastTransitionTime: '2024-07-25T02:17:57Z'
+            status: 'True'
+            type: Ready
+        -   lastProbeTime: null
+            lastTransitionTime: null
+            message: All of the VMI's DVs are bound and not running
+            reason: AllDVsReady
+            status: 'True'
+            type: DataVolumesReady
+        -   lastProbeTime: null
+            lastTransitionTime: null
+            message: 'cannot migrate VMI: PVC win2k19-install-iso is not shared, live
+                migration requires that all PVCs must be shared (using ReadWriteMany
+                access mode)'
+            reason: DisksNotLiveMigratable
+            status: 'False'
+            type: LiveMigratable
+        -   lastProbeTime: '2024-07-25T02:18:26Z'
+            lastTransitionTime: null
+            status: 'True'
+            type: AgentConnected
+        created: true
+        desiredGeneration: 1
+        observedGeneration: 1
+        printableStatus: Running
+        ready: true
+        runStrategy: RerunOnFailure
+        volumeSnapshotStatuses:
+        -   enabled: true
+            name: windows-install-rootdisk
+        -   enabled: true
+            name: win2k19-install-iso
+        -   enabled: false
+            name: windows-guest-tools
+            reason: Snapshot is not supported for this volumeSource type [windows-guest-tools]
+        -   enabled: false
+            name: windows-install-scripts
+            reason: Snapshot is not supported for this volumeSource type [windows-install-scripts]
