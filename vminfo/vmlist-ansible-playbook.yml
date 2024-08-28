@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+  - name: Get a list of all VirtualMachines
+    kubevirt.core.kubevirt_vm_info:
+    register: vm_list
+  
+  - name: Nice YAML
+    ansible.builtin.set_fact:
+      nice_vm:  "{{ vm_list | to_nice_yaml }}"
+
+  - name: Output to vmlist.csv
+    ansible.builtin.template:
+      src: vmlist.yml.j2
+      dest: vmlist.yml
+
+
+  - debug: 
+      var: nice_vm
+
+
