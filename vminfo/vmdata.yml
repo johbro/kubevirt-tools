@@ -1014,13 +1014,14 @@ resources:
                 Windows Server 2019"},"labels":{"app":"windows-install"},"name":"windows-install","namespace":"kubevirt-gitops"},"spec":{"dataVolumeTemplates":[{"metadata":{"name":"windows-install-rootdisk"},"spec":{"pvc":{"accessModes":["ReadWriteMany"],"resources":{"requests":{"storage":"30Gi"}},"volumeMode":"Block"},"source":{"blank":{}}}}],"runStrategy":"RerunOnFailure","template":{"metadata":{"labels":{"kubevirt.io/domain":"windows-install","vm.kubevirt.io/name":"windows-install","workload.template.kubevirt.io/server":"true"}},"spec":{"domain":{"cpu":{"cores":2},"devices":{"disks":[{"disk":{"bus":"sata"},"name":"windows-install-rootdisk"},{"bootOrder":1,"cdrom":{"bus":"sata"},"name":"win2k19-install-iso"},{"cdrom":{"bus":"sata"},"name":"windows-guest-tools"},{"cdrom":{"bus":"sata"},"name":"windows-install-scripts"}],"interfaces":[{"masquerade":{},"model":"virtio","name":"default"}],"networkInterfaceMultiqueue":true,"rng":{}},"machine":{"type":"pc-q35-rhel8.4.0"},"resources":{"requests":{"memory":"4Gi"}}},"evictionStrategy":"LiveMigrate","hostname":"windows-install","networks":[{"name":"default","pod":{}}],"terminationGracePeriodSeconds":180,"volumes":[{"dataVolume":{"name":"windows-install-rootdisk"},"name":"windows-install-rootdisk"},{"name":"win2k19-install-iso","persistentVolumeClaim":{"claimName":"win2k19-install-iso"}},{"containerDisk":{"image":"registry.redhat.io/container-native-virtualization/virtio-win"},"name":"windows-guest-tools"},{"configMap":{"name":"windows-install-scripts-9dbccd72cf"},"name":"windows-install-scripts"}]}}}}
 
                 '
+            kubemacpool.io/transaction-timestamp: '2024-08-28T14:10:40.794550179Z'
             kubevirt.io/latest-observed-api-version: v1
             kubevirt.io/storage-observed-api-version: v1
             name.os.template.kubevirt.io/win2k19: Microsoft Windows Server 2019
         creationTimestamp: '2024-07-23T20:52:28Z'
         finalizers:
         - kubevirt.io/virtualMachineControllerFinalize
-        generation: 1
+        generation: 4
         labels:
             app: windows-install
         managedFields:
@@ -1038,7 +1039,6 @@ resources:
                         f:app: {}
                 f:spec:
                     .: {}
-                    f:dataVolumeTemplates: {}
                     f:runStrategy: {}
                     f:template:
                         .: {}
@@ -1094,6 +1094,19 @@ resources:
         -   apiVersion: kubevirt.io/v1
             fieldsType: FieldsV1
             fieldsV1:
+                f:spec:
+                    f:dataVolumeTemplates: {}
+                    f:template:
+                        f:metadata:
+                            f:annotations:
+                                .: {}
+                                f:vm.kubevirt.io/os: {}
+            manager: Mozilla
+            operation: Update
+            time: '2024-08-28T14:10:40Z'
+        -   apiVersion: kubevirt.io/v1
+            fieldsType: FieldsV1
+            fieldsV1:
                 f:status:
                     .: {}
                     f:conditions: {}
@@ -1107,10 +1120,10 @@ resources:
             manager: virt-controller
             operation: Update
             subresource: status
-            time: '2024-07-25T02:18:26Z'
+            time: '2024-08-28T14:10:40Z'
         name: windows-install
         namespace: kubevirt-gitops
-        resourceVersion: '2434940'
+        resourceVersion: '72398982'
         uid: 888e2ba9-41e0-4280-8534-6abd899894c9
     spec:
         dataVolumeTemplates:
@@ -1130,6 +1143,8 @@ resources:
         runStrategy: RerunOnFailure
         template:
             metadata:
+                annotations:
+                    vm.kubevirt.io/os: Microsoft Windows Server 2019
                 creationTimestamp: null
                 labels:
                     kubevirt.io/domain: windows-install
@@ -1211,8 +1226,8 @@ resources:
             status: 'True'
             type: AgentConnected
         created: true
-        desiredGeneration: 1
-        observedGeneration: 1
+        desiredGeneration: 4
+        observedGeneration: 2
         printableStatus: Running
         ready: true
         runStrategy: RerunOnFailure
