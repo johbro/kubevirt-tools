@@ -1,0 +1,10 @@
+NAMESPACE, VMNAME, CORES, MEMORY
+{% for resource in vm_list['resources'] -%}
+{% if 'memory' in resource['spec']['template']['spec']['domain'] %}
+{{ resource['metadata']['namespace']}},{{resource['metadata']['name']}},{{resource['spec']['template']['spec']['domain']['cpu']['cores']}},{{resource['spec']['template']['spec']['domain']['memory']['guest'] }}
+{% endif %}
+{% if 'requests' in resource['spec']['template']['spec']['domain']['resources'] %}
+{{ resource['metadata']['namespace']}},{{resource['metadata']['name']}},{{resource['spec']['template']['spec']['domain']['cpu']['cores']}},{{resource['spec']['template']['spec']['domain']['resources']['requests']['memory'] }} 
+{% endif %}
+
+{%- endfor %}

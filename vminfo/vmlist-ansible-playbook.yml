@@ -10,13 +10,13 @@
     ansible.builtin.set_fact:
       nice_vm:  "{{ vm_list | to_nice_yaml }}"
 
-  - name: Output to vmlist.csv
+  - name: Output to vmdata.yml
     ansible.builtin.template:
-      src: vmlist.yml.j2
-      dest: vmlist.yml
+      src: vmdata.yml.j2
+      dest: vmdata.yml
 
-
-  - debug: 
-      var: nice_vm
-
+  - name: Output to vmdata.csv
+    ansible.builtin.template:
+      src: vmdata.csv.j2
+      dest: vmdata.csv
 
